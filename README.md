@@ -1,83 +1,83 @@
 # Agent-Friendly Mark
 
-[English](README.en.md)
+[日本語](README.ja.md)
 
-自作ソフトに付ける「AIエージェントが使いやすいように作っています」マーク。
-ガチガチの規格ではなく、「うちの個人開発はこの基準で作っている」という表明。
+A mark for software that is built so AI agents can use it easily.
+It is not a strict standard. It states that "my personal projects are built to these criteria."
 
-## コンセプト
+## Concept
 
-- このマークは人間よりも LLM（エージェント）のためにある
-- READMEにバッジとして貼る
-- バッジのリンク先は各リポジトリの `AGENTS.md`
-  - 人間には看板、AIには説明書への案内板になる
-- SILシリーズ共通のマークとして統一する
-- 段階や点数は付けない。マークは 1 種類
+- The mark exists for LLMs (agents) more than for people.
+- It goes in the README as a badge.
+- The badge links to the repository's `AGENTS.md`.
+  - For people it is a sign. For an AI it points to the manual.
+- It is the shared mark of the SIL series.
+- There are no levels or scores. There is one mark.
 
-## 基準
+## Criteria
 
-前提知識のないエージェントが、リポジトリだけを渡されて次のことができる状態を目指す。
+An agent with no prior knowledge, given only the repository, should be able to do the following.
 
-- `AGENTS.md` から、実行の入口・最小の例・結果の確かめ方が分かる
-- 代表的な作業を、人の助言なしで最後まで完了できる
-- 成果が正しいことを自分で確かめられる（終了コードが成功でも、出力が期待と違えば未完了）
-- 使い方を知るためにソースを解析しなくて済む
-- 失敗したとき、エラー文から次の行動が分かり、自力で立て直せる
+- Learn from `AGENTS.md` where to start, a minimal example, and how to check the result.
+- Finish a typical task from start to end without help from a person.
+- Confirm by itself that the result is correct. A successful exit code with output that differs from what was expected counts as unfinished.
+- Learn how to use the software without analyzing the source.
+- When something fails, tell from the error message what to do next, and recover without help.
 
-基準の中身は、使う側である Claude と Codex が合議で決めた（2026-10-04、Claude Opus 5.5 と Codex gpt-6.1-sol high）。
+The criteria were decided jointly by the two agents that use the software, Claude and Codex (2026-10-04, Claude Opus 5.5 and Codex gpt-6.1-sol high).
 
-## 確かめ方
+## How to check
 
-基準に届いているかは、エージェントに実際に使わせて確かめる。エージェントの感想ではなく行動ログを見る。
+Whether a project meets the criteria is checked by having agents actually use it. Look at the action log, not at the agent's impressions.
 
-1. そのソフトの代表的な作業 2〜3 個と、それぞれの期待する成果を決める
-2. Claude と Codex に、別々の新規会話で、同じ版のリポジトリと作業指示を渡す。手順は教えない
-3. 不正な入力などの安全な失敗を 1 個仕込み、立て直せるかを見る
-4. ログで詰まった所を見つけて、ソフトか `AGENTS.md` を直す
+1. Pick 2 or 3 typical tasks for the software, and the expected result of each.
+2. Give Claude and Codex the same version of the repository and the same task instructions, each in a separate new conversation. Do not tell them the steps.
+3. Include one safe failure, such as invalid input, and see whether the agent recovers.
+4. Find where the agent got stuck in the log, and fix the software or `AGENTS.md`.
 
-ログで見るところ：
+What to look at in the log:
 
-- 作業を最後まで完了し、成果が正しかったか
-- 人が助けた回数
-- 行き詰まって止まったか（対話プロンプトでの停止を含む）
-- 失敗から立て直せたか
-- 使い方を知るためにソース解析が必要だったか
-- 失敗したコマンド、同じことのやり直し、存在しないコマンドやオプションの推測実行（直す場所の手掛かりになる）
+- Whether the task was finished and the result was correct
+- How many times a person helped
+- Whether the agent stalled (including stopping at an interactive prompt)
+- Whether it recovered from a failure
+- Whether it had to analyze the source to learn how to use the software
+- Failed commands, repeated attempts at the same thing, and guessed commands or options that do not exist (these show where to fix)
 
-実行環境の故障や、エージェント側の明らかなミスは、ソフトの問題として数えない。
+Failures of the execution environment and obvious mistakes on the agent's side do not count as problems of the software.
 
-試した記録は各リポジトリの `AGENTS.md` の末尾に 1〜2 行で残す（いつ・どのモデルで・何を試したか）。
+Record each check in 1 or 2 lines at the end of the repository's `AGENTS.md`: when, with which models, and which tasks.
 
-## 作るときの指針
+## Guidelines for building
 
-基準に届かせるための手段。
+These are means of reaching the criteria.
 
-- 全操作がコマンド（CLI）でできる
-- 対話なしで実行できる（`--yes` などのフラグで完結）
-- 結果をJSONなど機械で読める形で出せる
-- 今の状態をコマンドで取得できる（`status --json` など。画面を見ないと分からない状態を作らない）
-- 変更する前に試せる（`--dry-run` など）
-- 同じ命令なら同じ結果になる
-- エラーに「原因」と「直し方」が書いてある
-- 失敗したあと、何が変更済みかが分かる
+- Every operation is available as a command (CLI).
+- Commands run without interaction (flags such as `--yes` are enough).
+- Results can be output in a machine-readable form such as JSON.
+- The current state can be read with a command (such as `status --json`). No state exists that can only be learned by looking at the screen.
+- A change can be tried before it is made (such as `--dry-run`).
+- The same command gives the same result.
+- Errors state the cause and how to fix it.
+- After a failure, it is clear what has already been changed.
 
 ## AGENTS.md
 
-書く内容は [AGENTS.template.md](AGENTS.template.md) を参照。
+See [AGENTS.template.md](AGENTS.template.md) for what to write.
 
-## バッジ
+## Badge
 
-[badges/badge.svg](badges/badge.svg) の 1 種類。見た目の確認は `badges/preview.html` をブラウザで開く。
+There is one badge: [badges/badge.svg](badges/badge.svg). To check how it looks, open `badges/preview.html` in a browser.
 
-- 濃紺に `>_`（ターミナル記号）＋ agent-friendly
-- 右端にシルバーの帯（SILシリーズのシルバーに寄せた）
+- Dark navy with `>_` (the terminal prompt) and the text "agent-friendly"
+- A silver band at the right end, matching the silver of the SIL series
 
-READMEへの貼り方（リンク先は各リポジトリの AGENTS.md）：
+How to put it in a README (the link points to the repository's AGENTS.md):
 
 ```markdown
 [![agent-friendly](badges/badge.svg)](AGENTS.md)
 ```
 
-## ライセンス
+## License
 
-[CC0 1.0](LICENSE)。基準・`AGENTS.md` のひな形・バッジは、許可もクレジットもなしで誰でも使えます。
+[WTFPL](LICENSE). Do whatever you want with the criteria, the `AGENTS.md` template, and the badge. No permission or credit is needed.

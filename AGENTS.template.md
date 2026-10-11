@@ -1,46 +1,46 @@
 # AGENTS.md
 
-<!-- 短くてよい。エージェントが最初に知りたいのは「何ができるか・どう実行するか・成功をどう確かめるか」。 -->
+<!-- Short is fine. What an agent wants to know first is what the software can do, how to run it, and how to confirm success. -->
 
-## これは何か
+## What this is
 
-<!-- 1〜2 行。何をするソフトか。 -->
+<!-- 1 or 2 lines. What the software does. -->
 
-## 動かす準備
+## Setup
 
-- 動作環境：
-- インストール：
-- 実行する場所（作業ディレクトリ）：
+- Requirements:
+- Install:
+- Where to run it (working directory):
 
-## 代表的な作業
+## Typical tasks
 
-<!-- そのまま実行できるコマンドを書く。作業ごとに、入力・出力・成功の確かめ方を添える。 -->
+<!-- Write commands that can be run as they are. For each task, add the input, the output, and how to confirm success. -->
 
-### 作業名
+### Task name
 
 ```bash
-コマンド
+command
 ```
 
-- 入力：
-- 出力（形式と出力先）：
-- 成功の確かめ方：
-- 失敗したときの見え方：
+- Input:
+- Output (format and location):
+- How to confirm success:
+- What a failure looks like:
 
-## 対話なしで動かす方法
+## Running without interaction
 
-<!-- 確認を省くフラグなど。 -->
+<!-- Flags that skip confirmation, and so on. -->
 
-## 副作用
+## Side effects
 
-- 上書き・削除するもの：
-- 外部に送信するもの：
-- 再実行してよいか：
+- What it overwrites or deletes:
+- What it sends outside the machine:
+- Whether it is safe to run again:
 
-## 詳しいヘルプ
+## Detailed help
 
-<!-- `--help` や詳細ドキュメントへの入口。 -->
+<!-- The entry point to `--help` or to detailed documentation. -->
 
-## agent-friendly の確認記録
+## agent-friendly check record
 
-<!-- 例：2026-10-04　Claude Opus 5.5 / Codex gpt-6.1-sol high　試した作業：○○、△△ -->
+<!-- Example: 2026-10-04  Claude Opus 5.5 / Codex gpt-6.1-sol high  Tasks tried: ..., ... -->
