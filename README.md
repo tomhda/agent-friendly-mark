@@ -2,6 +2,8 @@
 
 [日本語](README.ja.md)
 
+![agent-friendly](badges/badge.svg)
+
 A mark for software that is built so AI agents can use it easily.
 It is not a strict standard. It states that "my personal projects are built to these criteria."
 

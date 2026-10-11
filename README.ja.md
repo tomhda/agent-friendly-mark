@@ -2,6 +2,8 @@
 
 [English](README.md)
 
+![agent-friendly](badges/badge.svg)
+
 自作ソフトに付ける「AIエージェントが使いやすいように作っています」マーク。
 ガチガチの規格ではなく、「うちの個人開発はこの基準で作っている」という表明。
 
